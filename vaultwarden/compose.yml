@@ -1,0 +1,13 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://bitwarden.maikschulze.de"
+      SIGNUPS_ALLOWED: "false"
+      TZ: "Europe/Berlin"
+    volumes:
+      - /srv/appdata/vaultwarden/data:/data
+    ports:
+      - "8080:80"
