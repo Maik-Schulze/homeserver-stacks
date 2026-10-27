@@ -1,0 +1,15 @@
+# Zugangsdaten und Secrets
+.env
+*.env
+!*.env.example
+**/secrets/
+
+# Schluessel und Zertifikate
+*.key
+*.pem
+*.crt
+
+# Editor- und Systemreste
+*.swp
+*~
+.DS_Store
