@@ -1,0 +1,15 @@
+# Copy to /srv/stacks/agendalf/compose.yaml on the home server, next to a .env
+# file made from .env.example, then run: docker compose up -d --build
+services:
+  agendalf:
+    build:
+      context: /srv/agendalf
+    container_name: agendalf
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      # Only reachable on the Tailscale address, never on the LAN or the internet.
+      - "${AGENDALF_BIND}:8030:8000"
+    volumes:
+      - /srv/appdata/agendalf/data:/data
+      - /srv/appdata/agendalf/vault:/vault
