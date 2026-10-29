@@ -1,0 +1,44 @@
+# Paperless-ngx on the home server, nginx on the VPS proxies paperless.maikschulze.de here over Tailscale.
+# Needs a .env next to it made from .env.example, then run: docker compose up -d
+services:
+  broker:
+    image: docker.io/valkey/valkey:9-alpine
+    container_name: paperless-broker
+    restart: unless-stopped
+    volumes:
+      - /srv/appdata/paperless/valkey:/data
+
+  db:
+    image: docker.io/library/postgres:18
+    container_name: paperless-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: ${PAPERLESS_DBPASS}
+    volumes:
+      - /srv/appdata/paperless/pgdata:/var/lib/postgresql
+
+  paperless:
+    # Pinned, upgrade by changing the tag and running docker compose up -d
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.3.4
+    container_name: paperless
+    restart: unless-stopped
+    depends_on:
+      - db
+      - broker
+    env_file: .env
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_DBHOST: db
+      PAPERLESS_PRE_CONSUME_SCRIPT: /scripts/pre-consume.sh
+    ports:
+      # Only reachable on the Tailscale address, never on the LAN or the internet.
+      - "${PAPERLESS_BIND}:8010:8000"
+    volumes:
+      - /srv/appdata/paperless/data:/usr/src/paperless/data
+      - /srv/appdata/paperless/media:/usr/src/paperless/media
+      - /srv/appdata/paperless/export:/usr/src/paperless/export
+      - /srv/appdata/paperless/consume:/usr/src/paperless/consume
+      - ./scripts:/scripts:ro
