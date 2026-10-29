@@ -1,0 +1,20 @@
+# Source in /srv/tenkant-miss (git clone of Maik-Schulze/tenkant-miss), update with:
+#   git -C /srv/tenkant-miss pull && docker compose up -d --build
+# Public on tenkant.maikschulze.de through nginx on the VPS (69-tenkant-miss.conf).
+services:
+  app:
+    build:
+      context: /srv/tenkant-miss
+    image: tenkant-miss:latest
+    container_name: tenkant-miss
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # nginx on the VPS connects over Tailscale, only its X-Forwarded-* headers are trusted
+      ReverseProxy__KnownProxies: "100.91.52.35"
+    ports:
+      # Only reachable on the Tailscale address, never on the LAN or the internet.
+      - "${BIND}:8060:8080"
+    volumes:
+      - /srv/appdata/tenkant-miss/data:/data
+      - /srv/appdata/tenkant-miss/backups:/backups

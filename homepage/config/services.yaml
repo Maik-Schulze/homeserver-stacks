@@ -62,6 +62,11 @@
         href: https://postenbote.de
         icon: mdi-email-fast-outline
         siteMonitor: https://postenbote.de
+    - tenkant-miss:
+        href: https://tenkant.maikschulze.de
+        icon: mdi-karate
+        description: Anwesenheit Aikido
+        siteMonitor: https://tenkant.maikschulze.de/Account/Login
     - maikschulze.de:
         href: https://maikschulze.de
         icon: mdi-web
