@@ -1,0 +1,8 @@
+# IT-Tools, only reachable on the Tailscale address, nginx on the VPS proxies tools.maikschulze.de here.
+services:
+  it-tools:
+    image: corentinth/it-tools:2024.10.22-7ca5933
+    container_name: it-tools
+    restart: unless-stopped
+    ports:
+      - "100.70.136.107:8040:80"

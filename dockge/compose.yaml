@@ -1,0 +1,16 @@
+# Dockge for the stacks in /srv/stacks, only reachable on the Tailscale address.
+# Added as an agent in the Dockge on the VPS (dockge.maikschulze.de).
+services:
+  dockge:
+    image: louislam/dockge:1.5.0
+    container_name: dockge
+    restart: unless-stopped
+    environment:
+      # Same path inside and outside, so relative paths in the compose files keep working
+      DOCKGE_STACKS_DIR: /srv/stacks
+    ports:
+      - "100.70.136.107:5001:5001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/appdata/dockge:/app/data
+      - /srv/stacks:/srv/stacks

@@ -1,0 +1,14 @@
+# Beszel agent, the hub on the VPS (beszel.maikschulze.de) connects to it over Tailscale.
+# BESZEL_KEY in .env is the public key of the hub, shown in the hub under "Add system".
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent:0.21.1
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      LISTEN: 100.70.136.107:45876
+      KEY: ${BESZEL_KEY}
+    volumes:
+      - /srv/appdata/beszel-agent:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro

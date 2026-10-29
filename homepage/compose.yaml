@@ -1,0 +1,15 @@
+# Homepage dashboard, only reachable on the Tailscale address, nginx on the VPS proxies home.maikschulze.de here.
+# The configuration lives next to this file in config/.
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v2.7.0
+    container_name: homepage
+    restart: unless-stopped
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: home.maikschulze.de
+      PUID: 1000
+      PGID: 1000
+    ports:
+      - "100.70.136.107:8050:3000"
+    volumes:
+      - ./config:/app/config

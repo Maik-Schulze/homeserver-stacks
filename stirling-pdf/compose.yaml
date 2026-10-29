@@ -1,0 +1,17 @@
+# Stirling PDF, only reachable on the Tailscale address, nginx on the VPS proxies pdf.maikschulze.de here.
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:3.2.2
+    container_name: stirling-pdf
+    restart: unless-stopped
+    environment:
+      SECURITY_ENABLELOGIN: "false"
+      DISABLE_ADDITIONAL_FEATURES: "true"
+      SYSTEM_DEFAULTLOCALE: de-DE
+      SYSTEM_MAXFILESIZE: "200"
+      SYSTEM_GOOGLEVISIBILITY: "false"
+      SHOW_SURVEY: "false"
+    ports:
+      - "100.70.136.107:8020:8080"
+    volumes:
+      - /srv/appdata/stirling-pdf/configs:/configs

@@ -1,0 +1,72 @@
+- Dokumente:
+    - Paperless:
+        href: https://paperless.maikschulze.de
+        icon: paperless-ngx.png
+        description: Dokumentenarchiv
+        siteMonitor: https://paperless.maikschulze.de
+    - Stirling PDF:
+        href: https://pdf.maikschulze.de
+        icon: stirling-pdf.png
+        description: PDFs bearbeiten
+        siteMonitor: https://pdf.maikschulze.de
+    - IT-Tools:
+        href: https://tools.maikschulze.de
+        icon: it-tools.png
+        description: Kleine Helfer
+        siteMonitor: https://tools.maikschulze.de
+
+- Zuhause:
+    - Home Assistant:
+        href: https://homeassistant.maikschulze.de
+        icon: home-assistant.png
+        siteMonitor: https://homeassistant.maikschulze.de
+    - Vaultwarden:
+        href: https://bitwarden.maikschulze.de
+        icon: vaultwarden.png
+        description: Passwörter
+        siteMonitor: https://bitwarden.maikschulze.de
+    - Agendalf:
+        href: https://agendalf.maikschulze.de
+        icon: mdi-calendar-check
+        siteMonitor: https://agendalf.maikschulze.de
+
+- Verwaltung:
+    - Dockge:
+        href: https://dockge.maikschulze.de
+        icon: dockge.png
+        description: Container auf VPS und Homeserver
+        siteMonitor: https://dockge.maikschulze.de
+    - Cockpit:
+        href: https://cockpit.maikschulze.de
+        icon: cockpit.png
+        description: Homeserver und VM
+        siteMonitor: https://cockpit.maikschulze.de
+    - Beszel:
+        href: https://beszel.maikschulze.de
+        icon: beszel.png
+        description: Auslastung
+        siteMonitor: https://beszel.maikschulze.de
+    - Uptime Kuma:
+        href: https://kuma.maikschulze.de
+        icon: uptime-kuma.png
+        description: Erreichbarkeit
+        siteMonitor: https://kuma.maikschulze.de
+    - ntfy:
+        href: https://ntfy.maikschulze.de
+        icon: ntfy.png
+        description: Benachrichtigungen
+        siteMonitor: https://ntfy.maikschulze.de
+
+- Öffentlich:
+    - Postenbote:
+        href: https://postenbote.de
+        icon: mdi-email-fast-outline
+        siteMonitor: https://postenbote.de
+    - Rechnungskontor:
+        href: https://rechnungskontor.maikschulze.de
+        icon: mdi-receipt-text-outline
+        siteMonitor: https://rechnungskontor.maikschulze.de
+    - maikschulze.de:
+        href: https://maikschulze.de
+        icon: mdi-web
+        siteMonitor: https://maikschulze.de

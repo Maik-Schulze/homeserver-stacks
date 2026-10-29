@@ -1,0 +1,18 @@
+title: Maiks Server
+language: de
+theme: dark
+color: slate
+headerStyle: clean
+layout:
+  Dokumente:
+    style: row
+    columns: 3
+  Zuhause:
+    style: row
+    columns: 3
+  Verwaltung:
+    style: row
+    columns: 3
+  Öffentlich:
+    style: row
+    columns: 3
