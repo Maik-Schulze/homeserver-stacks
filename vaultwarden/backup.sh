@@ -25,4 +25,8 @@ restic backup --tag vaultwarden "$STAGE"
 # Aufbewahrung: 14 Tage, 8 Wochen, 12 Monate
 restic forget --tag vaultwarden --keep-daily 14 --keep-weekly 8 --keep-monthly 12 --prune
 
+# Meldet Uptime Kuma, dass das Backup durchgelaufen ist
+source /srv/stacks/backup/kuma-push.env
+curl -fsS -m 10 --retry 3 "$KUMA_PUSH_URL/$KUMA_PUSH_VAULTWARDEN?status=up&msg=OK" > /dev/null || true
+
 echo "$(date '+%F %T') Vaultwarden-Backup ok"

@@ -62,10 +62,6 @@
         href: https://postenbote.de
         icon: mdi-email-fast-outline
         siteMonitor: https://postenbote.de
-    - Rechnungskontor:
-        href: https://rechnungskontor.maikschulze.de
-        icon: mdi-receipt-text-outline
-        siteMonitor: https://rechnungskontor.maikschulze.de
     - maikschulze.de:
         href: https://maikschulze.de
         icon: mdi-web
